@@ -1,0 +1,82 @@
+spring:
+  profiles:
+    active: jongsu
+  config:
+    import: classpath:/aws.yml
+
+---
+
+spring:
+  profiles:
+    group:
+      "jongsu": "jongsudb, common"
+      "dev": "devdb,common"
+      "aws": "awsdb,common"
+
+---
+
+spring:
+  config:
+    activate:
+      on-profile: "devdb"
+  datasource:
+    driver-class-name: com.mysql.cj.jdbc.Driver
+    url: jdbc:mysql://petra-db.cqlbbqbjndhk.ap-northeast-2.rds.amazonaws.com:3306/petra?validationQuery="select 1"&useSSL=false&useUnicode=true&serverTimezone=Asia/Seoul
+    username: root
+    password: 12345678
+
+---
+
+spring:
+  config:
+    activate:
+      on-profile: "jongsudb"
+  datasource:
+    driver-class-name: com.mysql.cj.jdbc.Driver
+    url: jdbc:mysql://localhost:3306/ecopacking?useSSL=false&useUnicode=true&serverTimezone=Asia/Seoul&allowPublicKeyRetrieval=true
+    username: root
+    password: 1234
+
+---
+
+spring:
+  config:
+    activate:
+      on-profile: "awsdb"
+  datasource:
+    driver-class-name: com.mysql.cj.jdbc.Driver
+    url: jdbc:mysql://petra-db.cqlbbqbjndhk.ap-northeast-2.rds.amazonaws.com:3306/petra?useSSL=false&useUnicode=true&serverTimezone=Asia/Seoul
+    username: root
+    password: 12345678
+
+
+---
+
+spring:
+  config:
+    activate:
+      on-profile: "common"
+  servlet:
+    multipart:
+      max-file-size: 10MB
+      max-request-size: 10MB
+  jpa:
+    open-in-view: false
+    hibernate:
+      ddl-auto: none
+      use-new-id-generator-mappings: true
+    show-sql: true
+    properties:
+      hibernate:
+        format_sql: true
+        use_sql_comments: true
+    database-platform: org.hibernate.dialect.MySQL8Dialect
+
+---
+
+logging:
+  level:
+    com:
+      amazonaws:
+        util:
+          EC2MetadataUtils: error
