@@ -13,30 +13,30 @@ import lombok.NoArgsConstructor;
 @Entity
 @Getter
 @NoArgsConstructor
-public class OrderedProduct {
-	
+public class RecommendedBox {
+
 	@EmbeddedId
-	private OrderedProductId id;
+	private RecommendedBoxId id;
 	
 	@MapsId("id.orderId")
 	@ManyToOne(fetch = FetchType.LAZY)
 	@JoinColumn(name="order_id")
 	private Order order;
 	
-	@MapsId("id.productId")
+	@MapsId("id.boxId")
 	@ManyToOne(fetch = FetchType.LAZY)
-	@JoinColumn(name="product_id")
-	private Product product;
+	@JoinColumn(name="box_id")
+	private Box box;
 	
 	private int count;
 	
 	public void changeOrder(Order order) {
 		if(this.order != null) {
-			this.order.getOrderedProductList().remove(this);
+			this.order.getRecommendedBoxList().remove(this);
 		}
 		this.order = order;
-		if(!order.getOrderedProductList().contains(this)) {
-			order.getOrderedProductList().add(this);
+		if(!order.getRecommendedBoxList().contains(this)) {
+			order.getRecommendedBoxList().add(this);
 		}
 	}
 }

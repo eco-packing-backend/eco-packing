@@ -41,7 +41,7 @@ public class ProductService {
 		
 		for(int i=0; i<gList.size(); i++) {
 			ProductGet g = gList.get(i);
-			pList.add(new Product(g.getId(), g.getWidth(), g.getHeight(), g.getHigh(), g.getWeight(), g.getName(), g.getPackagingMaterialId(), g.getPackagingMaterialQuantity(), g.getFragile()));
+//			pList.add(new Product(g.getId(), g.getWidth(), g.getHeight(), g.getHigh(), g.getWeight(), g.getName(), g.getPackagingMaterialId(), g.getPackagingMaterialQuantity(), g.getFragile()));
 		}
 		return pList;
 	}

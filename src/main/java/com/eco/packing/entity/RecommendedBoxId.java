@@ -13,11 +13,13 @@ import lombok.NoArgsConstructor;
 @Embeddable
 @NoArgsConstructor
 @EqualsAndHashCode
-public class OrderedProductId implements Serializable {
+public class RecommendedBoxId implements Serializable {
 
-	@Column(name = "product_id")
-	private String productId;
-
-	@Column(name = "order_id")
+	@Column(name="order_id")
 	private String orderId;
+	
+	@Column(name="box_id")
+	private String boxId;
+	
+	
 }

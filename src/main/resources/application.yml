@@ -11,7 +11,6 @@ spring:
     group:
       "jongsu": "jongsudb, common"
       "dev": "devdb,common"
-      "aws": "awsdb,common"
 
 ---
 
@@ -21,8 +20,8 @@ spring:
       on-profile: "devdb"
   datasource:
     driver-class-name: com.mysql.cj.jdbc.Driver
-    url: jdbc:mysql://petra-db.cqlbbqbjndhk.ap-northeast-2.rds.amazonaws.com:3306/petra?validationQuery="select 1"&useSSL=false&useUnicode=true&serverTimezone=Asia/Seoul
-    username: root
+    url: jdbc:mysql://eco-packing-db.cqlbbqbjndhk.ap-northeast-2.rds.amazonaws.com:3306/eco?validationQuery="select 1"&useSSL=false&useUnicode=true&serverTimezone=Asia/Seoul
+    username: main
     password: 12345678
 
 ---
@@ -42,19 +41,6 @@ spring:
 spring:
   config:
     activate:
-      on-profile: "awsdb"
-  datasource:
-    driver-class-name: com.mysql.cj.jdbc.Driver
-    url: jdbc:mysql://petra-db.cqlbbqbjndhk.ap-northeast-2.rds.amazonaws.com:3306/petra?useSSL=false&useUnicode=true&serverTimezone=Asia/Seoul
-    username: root
-    password: 12345678
-
-
----
-
-spring:
-  config:
-    activate:
       on-profile: "common"
   servlet:
     multipart:
@@ -63,7 +49,7 @@ spring:
   jpa:
     open-in-view: false
     hibernate:
-      ddl-auto: none
+      ddl-auto: validate
       use-new-id-generator-mappings: true
     show-sql: true
     properties:
@@ -73,6 +59,13 @@ spring:
     database-platform: org.hibernate.dialect.MySQL8Dialect
 
 ---
+
+server:
+  servlet:
+    encoding :
+      charset : UTF-8
+      enabled : true
+      force : true
 
 logging:
   level:

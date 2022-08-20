@@ -25,9 +25,9 @@ public class ProductController {
 		return p;
 	}
 	
-	@GetMapping("/order/{orderId}")
-	public List<Product> getOrder(@PathVariable("orderId")String orderId) {
-		
-		return productService.getProductByOrderId(orderId);
-	}
+//	@GetMapping("/order/{orderId}")
+//	public List<Product> getOrder(@PathVariable("orderId")String orderId) {
+//		
+//		return productService.getProductByOrderId(orderId);
+//	}
 }

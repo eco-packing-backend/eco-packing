@@ -1,7 +1,11 @@
 package com.eco.packing.entity;
 
+import java.util.ArrayList;
+import java.util.List;
+
 import javax.persistence.Entity;
 import javax.persistence.Id;
+import javax.persistence.OneToMany;
 
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -21,5 +25,8 @@ public class PackagingMaterial {
 	private int height;
 	
 	private int high;
+	
+	@OneToMany(mappedBy="packagingMaterial")
+	List<Product> productList = new ArrayList<>();
 	
 }
