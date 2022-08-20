@@ -1,10 +1,13 @@
 package com.eco.packing.entity;
 
+import java.util.List;
+
+import java.util.ArrayList;
+
 import javax.persistence.Entity;
 import javax.persistence.Id;
-import javax.persistence.OneToOne;
+import javax.persistence.OneToMany;
 
-import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 
@@ -18,6 +21,6 @@ public class Category {
 	
 	private double errorRate;
 	
-	@OneToOne(mappedBy="category")
-	private Product product;
+	@OneToMany(mappedBy="category")
+	private List<Product> product = new ArrayList<>();
 }
