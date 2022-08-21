@@ -11,6 +11,7 @@ import com.eco.packing.dto.RecommendDto;
 import com.eco.packing.response.Response;
 import com.eco.packing.response.ResponseCode;
 import com.eco.packing.response.ResponseMessage;
+import com.eco.packing.service.OrderService;
 
 import lombok.RequiredArgsConstructor;
 
@@ -18,6 +19,7 @@ import lombok.RequiredArgsConstructor;
 @RequiredArgsConstructor
 public class OrderController {
 
+	private final OrderService orderService;
 	
 	@GetMapping("eco/order/{orderId}")
 	public Response<ArrayList<RecommendDto>> sendRecommendBox(@PathVariable("orderId") String orderId) {

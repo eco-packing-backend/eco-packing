@@ -1,4 +1,4 @@
-package com.eco.packing.controller;
+package com.eco.packing.dto;
 
 import lombok.AllArgsConstructor;
 import lombok.Getter;

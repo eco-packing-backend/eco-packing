@@ -40,7 +40,7 @@ public class OrderService {
 	private final ProductRepository productRepository;
 	private final CategoryRepository categoryRepository;
 
-	public ArrayList<RecommendDto> printOrder(String orderId) {
+	public ArrayList<RecommendDto> recommend (String orderId) {
 		
 		/*
 		 * 필요한 데이터들

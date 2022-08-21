@@ -8,6 +8,7 @@ import com.eco.packing.dto.BoxFeedbackDto;
 import com.eco.packing.response.Response;
 import com.eco.packing.response.ResponseCode;
 import com.eco.packing.response.ResponseMessage;
+import com.eco.packing.service.FeedbackService;
 
 import lombok.RequiredArgsConstructor;
 
@@ -15,11 +16,12 @@ import lombok.RequiredArgsConstructor;
 @RequiredArgsConstructor
 public class FeedbackController {
 	
-	@PostMapping("eco/feedback")
-	public Response getFeedback(@RequestBody BoxFeedbackDto boxFeedbackDto) {
+	private final FeedbackService feedbackService;
+	
+	@PostMapping("eco/order/feedback")
+	public Response getOrderFeedback(@RequestBody BoxFeedbackDto boxFeedbackDto) {
 		
-		System.out.println(boxFeedbackDto.getBoxFeedback());
-		
-		return new Response(ResponseCode.SUCCESS, ResponseMessage.SUCCESS, boxFeedbackDto);
+		feedbackService.saveFeedback(boxFeedbackDto);
+		return new Response();
 	}
 }

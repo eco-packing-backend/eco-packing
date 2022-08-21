@@ -2,8 +2,6 @@ package com.eco.packing.dto;
 
 import java.util.ArrayList;
 
-import com.eco.packing.controller.MaterialFeedbackDto;
-
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
