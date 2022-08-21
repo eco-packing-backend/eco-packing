@@ -12,6 +12,7 @@ import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 import javax.persistence.OneToOne;
+import javax.persistence.Transient;
 
 import lombok.AllArgsConstructor;
 import lombok.Getter;
@@ -36,7 +37,8 @@ public class Product {
 	
 	private String name;
 	
-	@OneToOne(fetch = FetchType.LAZY)
+	// 상품 정보 가져올 때 packagingMaterial도 같이 가져오기
+	@ManyToOne
 	@JoinColumn(name="packaging_material_id")
 	private PackagingMaterial packagingMaterial;
 	
@@ -53,4 +55,8 @@ public class Product {
 	
 	@OneToMany(mappedBy="product")
 	private List<Feedback> feedbackList = new ArrayList<>();
+	
+	public int getVolume() {
+		return width * height * high;
+	}
 }

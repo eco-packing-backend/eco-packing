@@ -2,6 +2,7 @@ package com.eco.packing.entity;
 
 import javax.persistence.Entity;
 import javax.persistence.Id;
+import javax.persistence.Transient;
 
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -21,4 +22,8 @@ public class Box {
 	private int height;
 	
 	private int high;
+
+	public int getVolume() {
+		return width * height * high;
+	}
 }
