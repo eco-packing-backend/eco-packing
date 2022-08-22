@@ -19,6 +19,9 @@ public interface OrderedProductRepository extends JpaRepository<OrderedProduct, 
 			"WHERE op.order_id = :orderId", nativeQuery = true)
 	ArrayList<String> getProductFromOrderedProduct(@Param(value="orderId")String orderId);
 	
+	@Query(value="SELECT * \n" +
+			"FROM ordered_product op WHERE op.order_id = :orderId", nativeQuery = true)
+	ArrayList<OrderedProduct> getProductFromOrder(@Param(value="orderId")String orderId);
 //	@Query(value="SELECT p.id as id, p.width as width, p.height as height, p.high as high, p.weight as weight, p.name as name, p.packaging_material_id as packagingMaterialId,"
 //			+ " p.packaging_material_quantity as packagingMaterialQuantity, p.fragile as fragile \n" + 
 //			"FROM ordered_product op join product p ON (op.product_id = p.id)\n" + 

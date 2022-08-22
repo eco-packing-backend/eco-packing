@@ -4,6 +4,8 @@ import java.util.ArrayList;
 import java.util.List;
 
 import javax.persistence.Entity;
+import javax.persistence.EnumType;
+import javax.persistence.Enumerated;
 import javax.persistence.Id;
 import javax.persistence.OneToMany;
 
@@ -18,7 +20,8 @@ public class Order {
 	@Id
 	private String id;
 	
-	private String state;
+	@Enumerated(EnumType.STRING)
+	private State state;
 	
 	@OneToMany(mappedBy="id.orderId")
 	private List<OrderedProduct> orderedProductList = new ArrayList<>();

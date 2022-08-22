@@ -18,7 +18,7 @@ public class FeedbackController {
 	
 	private final FeedbackService feedbackService;
 	
-	@PostMapping("eco/order/feedback")
+	@PostMapping("eco/feedback")
 	public Response getOrderFeedback(@RequestBody BoxFeedbackDto boxFeedbackDto) {
 		
 		feedbackService.saveFeedback(boxFeedbackDto);

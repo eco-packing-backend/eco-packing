@@ -56,6 +56,8 @@ public class Product {
 	@OneToMany(mappedBy="product")
 	private List<Feedback> feedbackList = new ArrayList<>();
 	
+	private double error;
+	
 	public int getVolume() {
 		return width * height * high;
 	}

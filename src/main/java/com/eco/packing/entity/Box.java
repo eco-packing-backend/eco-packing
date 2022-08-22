@@ -1,6 +1,8 @@
 package com.eco.packing.entity;
 
 import javax.persistence.Entity;
+import javax.persistence.EnumType;
+import javax.persistence.Enumerated;
 import javax.persistence.Id;
 import javax.persistence.Transient;
 
@@ -23,7 +25,11 @@ public class Box {
 	
 	private int high;
 
+	@Enumerated(EnumType.STRING)
+	private Texture texture;
+	
 	public int getVolume() {
 		return width * height * high;
 	}
+	
 }
