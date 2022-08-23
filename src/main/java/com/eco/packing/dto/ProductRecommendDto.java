@@ -32,22 +32,4 @@ public class ProductRecommendDto {
 		this.error = error;
 	}
 
-	/**
-	 * getMaxVolume : 오차를 적용하지 않은 부피를 계산해주는 함수
-	 * 
-	 * @return 오차를 적용하지 않은 부피
-	 */
-	public int getMaxVolume() {
-		return width * height * high;
-	}
-
-	/**
-	 * getMinVolume : 오차를 적용한 부피를 계산해주는 함수
-	 * 
-	 * @return 오차를 적용한 부피
-	 */
-	public double getMinVolume() {
-		return (width * height * high) * (100 - error) / 100.0;
-	}
-
 }

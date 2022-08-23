@@ -5,6 +5,8 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
+import javax.transaction.Transactional;
+
 import org.springframework.scheduling.annotation.Scheduled;
 import org.springframework.stereotype.Service;
 
@@ -30,13 +32,14 @@ public class FeedbackService {
 	@Scheduled(cron="0 0 0/1 1/1 * ?")
 	public void updateFeedback() {
 		
+		// 종이 포장재
 		double paperAverage = FeedbackPoint.paperTotal / (double)FeedbackPoint.paperCount++;
+		// 냉장 포장재
+		double frozenAverage = FeedbackPoint.coldTotal / (double)FeedbackPoint.coldCount++;
 		
-//		double 
-//		FeedbackPoint.coldTotal += point;
-//		FeedbackPoint.coldCount++;
 	}
 	
+	@Transactional
 	public void saveFeedback(BoxFeedbackDto boxFeedbackDto) {
 
 		/*
@@ -53,6 +56,7 @@ public class FeedbackService {
 		ArrayList<Product> productList = productRepository.findByIdIn(new ArrayList<>(productMap.keySet()));
 		for (Product p : productList) {
 			productMap.put(p.getId(), p);
+			
 		}
 
 		// 박스에 이상 -> 상품 오차율 수장 . 포장재 이상 -> 포장재 양 수정
@@ -68,13 +72,14 @@ public class FeedbackService {
 			case "종이포장":
 				FeedbackPoint.paperTotal += point;
 				FeedbackPoint.paperCount++;
+				p.updatePackagingMaterialQuantity(point);
 				break;
 				
-			case "냉동포장":
-			case "냉장포장1":
-				FeedbackPoint.coldTotal += point;
-				FeedbackPoint.coldCount++;
-				break;
+//			case "냉동포장":
+//			case "냉장포장1":
+//				FeedbackPoint.coldTotal += point;
+//				FeedbackPoint.coldCount++;
+//				break;
 			}
 				
 			Feedback fb = new Feedback(0L, FeedbackType.PACKAGING_MATERIAL, null, p,
