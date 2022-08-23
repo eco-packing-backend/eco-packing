@@ -70,16 +70,10 @@ public class FeedbackService {
 			
 			switch(p.getPackagingMaterial().getName()) {
 			case "종이포장":
-				FeedbackPoint.paperTotal += point;
-				FeedbackPoint.paperCount++;
-				p.updatePackagingMaterialQuantity(point);
+				double result = p.getPackagingMaterialQuantity() * (1-0.02*point);
+				p.updatePackagingMaterialQuantity(result);
 				break;
 				
-//			case "냉동포장":
-//			case "냉장포장1":
-//				FeedbackPoint.coldTotal += point;
-//				FeedbackPoint.coldCount++;
-//				break;
 			}
 				
 			Feedback fb = new Feedback(0L, FeedbackType.PACKAGING_MATERIAL, null, p,

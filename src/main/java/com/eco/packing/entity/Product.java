@@ -42,7 +42,7 @@ public class Product {
 	@JoinColumn(name="packaging_material_id")
 	private PackagingMaterial packagingMaterial;
 	
-	private int packagingMaterialQuantity;
+	private double packagingMaterialQuantity;
 	
 	private int fragile;
 	
@@ -62,8 +62,8 @@ public class Product {
 		return width * height * high;
 	}
 	
-	public void updatePackagingMaterialQuantity(int feedback) {
-		this.packagingMaterialQuantity += feedback;
+	public void updatePackagingMaterialQuantity(double feedback) {
+		this.packagingMaterialQuantity = feedback;
 	}
 	
 	/**

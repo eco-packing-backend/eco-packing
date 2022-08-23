@@ -1,8 +1,5 @@
 package com.eco.packing.dto;
 
-import java.util.ArrayList;
-import java.util.List;
-
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -10,11 +7,9 @@ import lombok.Setter;
 
 @Getter
 @Setter
+@NoArgsConstructor
 @AllArgsConstructor
-public class RecommendDto {
+public class OrderDto {
 
-	String size;
-	String texture;
-	List<ProductPackingDto> ppList = new ArrayList<>();
-	
+	public String orderId;
 }
